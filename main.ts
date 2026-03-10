@@ -36,7 +36,7 @@ input.onButtonPressed(Button.A, function () {
     A = (A + 1) % 101
     basic.showNumber(A)
 })
-// Berekening uitvoeren (schudden)
+// Berekening
 input.onGesture(Gesture.Shake, function () {
     now = input.runningTime()
     if (now - lastS < 1500) {
@@ -75,9 +75,11 @@ input.onGesture(Gesture.Shake, function () {
             ans = A * A * 3.14159
         } else if (op == 9) {
             ans = A * A * 3.14159 / 4
+        } else if (op == 10) {
+            ans = A - B
         }
-        // Weergave resultaat
-        if (op >= 8 || op == 4 || op == 5 || op == 3 && B < 0) {
+        // weergave resultaat
+        if (op >= 8 && op <= 9 || op == 4 || op == 5 || op == 3 && B < 0) {
             basic.showString("" + (formatDec(ans, 2)))
         } else {
             basic.showNumber(ans)
@@ -85,26 +87,26 @@ input.onGesture(Gesture.Shake, function () {
     }
     lastS = now
 })
-// Operator wisselen (Menu)
+// keuze
 input.onButtonPressed(Button.AB, function () {
-    op = (op + 1) % 10
+    op = (op + 1) % 11
     if (op == 0) {
         // +
         basic.showLeds(`
+            . . . . .
             . . # . .
+            . # # # .
             . . # . .
-            # # # # #
-            . . # . .
-            . . # . .
+            . . . . .
             `)
     } else if (op == 1) {
         // *
         basic.showLeds(`
-            # . . . #
+            . . . . .
             . # . # .
             . . # . .
             . # . # .
-            # . . . #
+            . . . . .
             `)
     } else if (op == 2) {
         // :
@@ -131,17 +133,26 @@ input.onButtonPressed(Button.AB, function () {
         // Korte zijde Pythagoras
         basic.showString("K")
     } else if (op == 6) {
-        // Oppervlakte Vierkant (A²)
+        // Vierkant (A²)
         basic.showString("V")
     } else if (op == 7) {
-        // Oppervlakte Rechthoek (AxB)
+        // Rechthoek (AxB)
         basic.showString("R")
     } else if (op == 8) {
-        // Oppervlakte Cirkel Straal (r²*pi)
+        // straal
         basic.showString("C")
     } else if (op == 9) {
-        // Oppervlakte Cirkel Diameter ((d²*pi)/4)
+        // diameter
         basic.showString("D")
+    } else if (op == 10) {
+        // aftrekken
+        basic.showLeds(`
+            . . . . .
+            . . . . .
+            . # # # .
+            . . . . .
+            . . . . .
+            `)
     }
 })
 // Getal B verhogen
@@ -161,6 +172,5 @@ let exp = 0
 let op = 0
 let remainder = 0
 let base = 0
-// --- Globale Variabelen ---
 let res = 0
 op = -1
