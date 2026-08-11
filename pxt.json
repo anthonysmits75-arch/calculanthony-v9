@@ -1,5 +1,5 @@
 {
-    "name": "Calculanthony V9",
+    "name": "Calculanthony V10",
     "description": "",
     "dependencies": {
         "core": "*",
@@ -11,15 +11,13 @@
         "main.ts",
         "README.md"
     ],
-    "testFiles": [
-        "test.ts"
-    ],
+    "testFiles": [],
     "targetVersions": {
-        "target": "8.0.18",
+        "target": "9.0.8",
         "targetId": "microbit"
     },
     "supportedTargets": [
         "microbit"
     ],
-    "preferredEditor": "blocksprj"
+    "preferredEditor": "tsprj"
 }
